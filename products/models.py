@@ -30,7 +30,7 @@ class Menu(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=45)
-    manu = models.ForeignKey('Menu', on_delete=models.CASCADE)    
+    menu = models.ForeignKey('Menu', on_delete=models.CASCADE)    
     
     class Meta:
         db_table = 'categories'
@@ -66,7 +66,6 @@ class AllergyDrink(models.Model):
         
 class Nutrition(models.Model):
     drink = models.ForeignKey('Drink', on_delete=models.CASCADE)
-    size = models.ForeignKey('Size', on_delete=models.CASCADE)
    
     one_serving_kcal = models.DecimalField(max_digits=10,decimal_places=2)
     sodium_mg = models.DecimalField(max_digits=10,decimal_places=2)
@@ -78,10 +77,3 @@ class Nutrition(models.Model):
     class Meta:
         db_table = 'nutritions'
 
-class Size(models.Model):
-    name = models.CharField(max_length=45)
-    size_ml = models.CharField(max_length=45)
-    size_fluid_ounce = models.CharField(max_length=45)
-    
-    class Meta:
-        db_table ='sizes'
